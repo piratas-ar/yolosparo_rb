@@ -1,0 +1,61 @@
+- error = @campaign.errors.include?(:title)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :title, :class => 'control-label'
+  .controls
+    =f.text_field :title, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:title, :class => 'text-error') : pat(:example)
+- error = @campaign.errors.include?(:slogan)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :slogan, :class => 'control-label'
+  .controls
+    =f.text_field :slogan, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:slogan, :class => 'text-error') : pat(:example)
+- error = @campaign.errors.include?(:description)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :description, :class => 'control-label'
+  .controls
+    =f.text_area :description, rows: "10", :class => 'form-control input-large input-with-feedback summernote'
+    %span.help-inline=error ? f.error_message_on(:description, :class => 'text-error') : pat(:example)
+- error = @campaign.errors.include?(:photo)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :photo, :class => 'control-label'
+  .controls
+    =f.file_field :photo, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:photo, :class => 'text-error') : pat(:example)
+    - if @campaign.photo.url
+      =image_tag(@campaign.photo.url, class: 'img-responsive')
+- error = @campaign.errors.include?(:objective)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :objective, :class => 'control-label'
+  .controls
+    ~f.text_area :objective, :class => 'form-control input-large input-with-feedback summernote'
+    %span.help-inline=error ? f.error_message_on(:objective, :class => 'text-error') : pat(:example)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :hashtag, :class => 'control-label'
+  .controls
+    =f.text_field :hashtag, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:hashtag, :class => 'text-error') : pat(:example)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :twitter_id, :class => 'control-label'
+  .controls
+    =f.text_field :twitter_id, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:twitter_id, :class => 'text-error') : pat(:example)
+- error = @campaign.errors.include?(:model_text_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :model_text_id, :class => 'control-label'
+  .controls
+    =f.select(:model_text_id, :collection => @model_texts, :fields => [:title, :id], :include_blank => 'None')
+    %span.help-inline=error ? f.error_message_on(:model_text_id, :class => 'text-error') : pat(:example)
+- error = @campaign.errors.include?(:authorized_voice_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :authorized_voice_id, :class => 'control-label'
+  .controls
+    =f.select(:authorized_voice_id, :collection => @authorized_voices, :fields => [:name, :id], :include_blank => 'None')
+    %span.help-inline=error ? f.error_message_on(:authorized_voice_id, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:campaigns, :index), :class => 'btn btn-default'

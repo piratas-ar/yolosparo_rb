@@ -1,0 +1,17 @@
+!!! 5
+%html
+  %head
+    %title= yield_content :title || 'Yo Los Paro'
+    %meta{ content: "", name: yield_content(:meta_name) || 'Yo Los Paro' }
+    %meta{ name: "twitter:dnt", content:"on" }
+    = stylesheet_link_tag 'bootstrap.min'
+    = stylesheet_link_tag 'style'
+    = yield_content :head
+  %body
+    = yield
+
+    = javascript_include_tag 'jquery'
+    = javascript_include_tag 'jquery.unveil'
+    = javascript_include_tag 'bootstrap.min'
+    = javascript_include_tag 'application'
+    = yield_content :js

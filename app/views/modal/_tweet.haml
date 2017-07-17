@@ -1,0 +1,21 @@
+.modal.fade#tw{role:"dialog", tabindex:"-1"}
+  .modal-dialog{role:"document"}
+    = form_tag "https://twitter.com/intent/tweet", method: "get", target: "_blank" do
+      .modal-content
+        .modal-header
+          %button.close{ type:"button", "data-dismiss":"modal", "aria-label":"Cerrar" }
+            %span{"aria-hidden":"true"}
+              &times;
+          %h4.modal-title
+            Tuiteale a
+            %span.lista-legis
+
+        .modal-body
+          .form-group
+            = text_area_tag :text, class: "input-sm form-control", rows: "4"
+
+        .modal-footer
+          = submit_tag "Tuitear", class: "btn btn-primary btn-lg", id: "tw-submit"
+
+:javascript
+  var tweet = "#{tweet}";

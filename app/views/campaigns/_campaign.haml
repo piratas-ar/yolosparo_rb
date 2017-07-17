@@ -1,0 +1,10 @@
+=link_to("/campaign/#{campaign.id}", :class => 'container-fluid.padless') do
+  %img.cover{src: "#{campaign.photo.url}"}
+
+  .container.bigger.con-padding-inferior
+
+    %h1
+      =campaign.description.html_safe
+
+    %p
+      =campaign.authorized_voice

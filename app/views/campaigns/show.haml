@@ -1,0 +1,49 @@
+- content_for :title do
+  =@campaign.title
+
+- content_for :meta_name do
+  =@campaign.slogan
+
+-# Intro
+.container-fluid.padless
+  %img.cover{src: "#{@campaign.photo.url}"}
+
+  .container.bigger.con-padding-inferior
+
+    %h1
+      =@campaign.title
+
+    %p
+      =@campaign.slogan
+
+    %p
+      =@campaign.description.html_safe
+
+    %p
+      =@campaign.objective.html_safe
+
+    %hr
+
+    %p
+      =@campaign.objective.html_safe
+
+-# Contenido
+.container-fluid
+  .row-fluid
+
+    -# Sidebar
+    %aside.col-md-3.pull-right#sidebar
+      %a.btn.btn-primary.btn-act#btn-mail{href: '#mail'} Escribiles
+      %a.btn.btn-primary.btn-act#btn-tw{href: '#tw'} Tuiteales
+      %a.btn.btn-primary.btn-act#btn-timeline{href: '#timeline', data: {hashtag: @campaign.hashtag, id: @campaign.twitter_id}}
+        ="Ver #{@campaign.hashtag}"
+
+    %section.col-md-9
+      %article
+        %header
+
+        %section.row-fluid.tab#legis-tab
+          = partial "legi/gato", collection: Legi.where(region: 'AR-C').shuffle
+
+= partial "modal/mail", locals: { asunto: @campaign.model_text }
+= partial "modal/tweet", locals: { tweet: @campaign.model_text.content }
