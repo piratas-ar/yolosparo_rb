@@ -1,0 +1,13 @@
+%section.legigato
+  %img.foto{data: {src: "#{gato.picture_url}" }}
+  %h2.nombre= gato.full_name.downcase.split(' ').map(&:capitalize).join(' ')
+  .redes
+    - if gato.twitter_account.present?
+      = link_to "@#{gato.twitter_account}", "https://twitter.com/#{gato.twitter_account}", {class: 'ico twitter', title: "@#{gato.twitter_account}", target: '_blank'}
+    - if gato.facebook_account.present?
+      = link_to "fb/#{gato.facebook_account}", "https://facebook.com/#{gato.facebook_account}", {class: 'ico facebook', title: "fb/#{gato.facebook_account}", target: '_blank'}
+
+    = link_to gato.email, "mailto:#{gato.email}", {class: 'ico email', title: gato.email, target: '_blank'}
+
+    - if gato.site_url.present?
+      = link_to gato.site_url, gato.site_url, {class: 'ico site', title: "Sitio Web", target: '_blank'}

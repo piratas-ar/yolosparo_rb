@@ -1,0 +1,7 @@
+%ul.nav.nav-tabs
+  %li=link_to tag_icon(:list, pat(:list)), url(:authorized_voices, :index)
+  %li.active=link_to tag_icon(:plus, pat(:new)), url(:authorized_voices, :new)
+
+.tabs-content
+  = form_for :authorized_voices, url(:authorized_voices, :create), :class => 'form-horizontal' do |f|
+    =partial 'authorized_voices/form', :locals => { :f => f }

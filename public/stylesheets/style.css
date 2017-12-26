@@ -1,0 +1,76 @@
+.padless {padding:0!important}
+.intro {
+  min-height:300px;
+  width:100%;
+  border:0;
+}
+
+.btn-act {
+  border-radius: 2px;
+  width: 100%;
+  font-size: 24px;
+  padding: 30px 0;
+  margin: 15px 0 10px;
+}
+
+.ico {
+    background-image: url('/images/redes.png');
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    text-indent: -500px;
+    overflow:hidden;
+}
+
+.twitter {
+  background-position: -40px 0;
+}
+
+.facebook {
+  background-position: -2px 0;
+}
+
+.email {
+  background-position: 40px 0;
+}
+
+.site {
+  background-position: -85px 0;
+}
+
+.legigato {
+  display: inline-block;
+  width: 24.5%;
+  min-width: 220px;
+  margin:0;
+  padding:0;
+}
+
+.legigato .foto {
+  width: 70%;
+  margin: 0;
+  display: block;
+  clear: both;
+  border-radius: 90px;
+}
+
+.legigato .nombre {
+  font-size: 20px;
+}
+
+#tw textarea {
+  font-size: 150%;
+}
+
+.cover {
+  width: 100vw;
+  height: 75vh;
+}
+
+.bigger {
+  font-size: 150%;
+}
+
+.con-padding-inferior {
+  padding-bottom: 50px
+}

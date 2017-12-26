@@ -1,0 +1,26 @@
+-# Intro
+.container-fluid.padless
+  %iframe.intro{src: "https://smaldone.com.ar/evoto"}
+  %span.pull-right
+    Fuente:
+    %a{href: "https://smaldone.com.ar/evoto", target: "_blank"} https://smaldone.com.ar/evoto
+
+-# Contenido
+.container-fluid
+  .row-fluid
+
+    -# Sidebar
+    %aside.col-md-3.pull-right#sidebar
+      %a.btn.btn-primary.btn-act#btn-mail{href: '#mail'} Escribiles
+      %a.btn.btn-primary.btn-act#btn-tw{href: '#tw'} Tuiteales
+      %a.btn.btn-primary.btn-act#btn-timeline{href: '#timeline', data: {hashtag: 'NoAlVotoElectronico', id: '790023681556766720'}} Ver #NoAlVotoElectrónico
+
+    %section.col-md-9
+      %article
+        %header
+
+        %section.row-fluid.tab#legis-tab
+          = partial "legi/gato", collection: Legi.where(region: 'AR').shuffle
+
+= partial "modal/mail", locals: { asunto: "Decile NO al voto electrónico"}
+= partial "modal/tweet", locals: { tweet: "Legisladores %legis% díganle #NOalVotoElectronico" }
